@@ -16,10 +16,61 @@ jobs:
       - run:
           name: Run tests
           command: |
-            docker-compose run --rm test bash -c "python3 setup.py develop && pytest --cov=pacemaker"
+            docker-compose run --rm test bash -c "python3 setup.py develop && pytest --cov=pacemaker --cov-fail-under 95 --cov-report=html --html=report.html --self-contained-html"
+
+  sonar_scan:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+
+      - run:
+          name: Scan
+          command: |
+            docker-compose run --rm test ./scan   
             
+  package_pypi_upload:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+
+      - run:
+          name: Scan
+          command: |
+            docker-compose run --rm test ./upload_pypi
+
 workflows:
   version: 2
-  build-and-test:
+  build-test-and-approval-deploy:
     jobs:
       - test  # your custom job from your config, that builds your code
+      - sonar_scan
+      - hold: # <<< A job that will require manual approval in the CircleCI web application.
+          type: approval # <<< This key-value pair will set your workflow to a status of "On Hold"
+          requires: # We only run the "hold" job when test2 has succeeded
+            - test
+            - sonar_scan
+          filters:
+            branches:
+              only:
+                - master
+      # On approval of the `hold` job, any successive job that requires the `hold` job will run. 
+      # In this case, a user is manually triggering the deploy job.
+      - package_pypi_upload:
+          requires:
+            - hold
+          filters:
+            branches:
+              only:
+                - master
