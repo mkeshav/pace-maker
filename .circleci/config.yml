@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            docker-compose run --rm test bash -c "python3 setup.py develop && pytest --cov=genie_pkg"
+            docker-compose run --rm test bash -c "python3 setup.py develop && pytest --cov=pacemaker"
             
 workflows:
   version: 2
