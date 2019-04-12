@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  test:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app:cached
+    command: >
+      bash -c "python3 setup.py develop && pytest -vv"
+    environment:
+      - SONAR_CLOUD_TOKEN
+      - CIRCLE_BRANCH
+      - CIRCLE_PULL_REQUEST

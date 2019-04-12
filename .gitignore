@@ -1,0 +1,17 @@
+htmlcov/
+.history/
+dist/
+build/
+pacemaker*.egg-info/
+.coverage
+**/__pycache__/**
+report.html
+
+docs/_build
+docs/_static
+docs/_templates
+.vscode
+.scannerwork/
+.env
+pytest-report.xml
+coverage.xml
