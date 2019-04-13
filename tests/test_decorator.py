@@ -13,7 +13,7 @@ def process(data):
 @patch('time.sleep', side_effect=lambda x: None)
 @patch('test_decorator.process', side_effect=lambda x: None)
 def test_pace_me(mock_process, mock_sleep):
-    decorated_func = pace_me(data_gen, rate_per_second=3, number_of_tokens_per_call=1, n=6)
+    decorated_func = pace_me(data_gen, rate_per_second=3, n=6)
     decorated_func(mock_process)
     mock_process.assert_called_with([0, 1, 2, 3, 4, 5])
     calls = [
