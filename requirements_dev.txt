@@ -2,5 +2,3 @@ pytest
 pytest-sugar
 pytest-html
 pytest-cov
-pipdeptree
-sphinx
