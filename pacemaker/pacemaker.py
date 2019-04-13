@@ -57,7 +57,7 @@ class PaceMaker(object):
             # If you make this a decorator, then run the callable here.
             if self.tokens > 0:
                 # Calculate the pace based on the tokens left
-                return self.tokens/self.rate_per_second
+                return round(self.tokens/self.rate_per_second, 3)
             else:
                 return self.no_token_sleep_in_seconds
 

@@ -22,3 +22,7 @@ def test_pace_me(mock_process, mock_sleep):
                 call([0, 1, 2, 3, 4, 5]), call([0, 1, 2, 3, 4, 5])
             ]
     mock_process.assert_has_calls(calls, any_order=False)
+    sleep_calls = [call(0.667), call(0.333), call(1), call(1), call(1), call(1)]
+    mock_sleep.assert_called_with(1)
+    mock_sleep.assert_has_calls(sleep_calls, any_order=False)
+
