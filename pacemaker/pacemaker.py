@@ -4,6 +4,10 @@ from threading import Lock
 class PaceMaker(object):
     '''
         Implementation of https://en.wikipedia.org/wiki/Token_bucket#Algorithm
+
+
+        Args:
+            no_token_sleep_in_seconds: Seconds to nap when there are no tokens to spend
     '''
     @classmethod
     def _epoch_in_seconds(self):
@@ -17,6 +21,11 @@ class PaceMaker(object):
         self.no_token_sleep_in_seconds = no_token_sleep_in_seconds
         
     def set_rate_per_second(self, rate_per_second):
+        '''
+            Sets the rate/sec
+            Args:
+                rate_per_second: rate/sec
+        '''
         with self.lock:
             self.rate_per_second = rate_per_second
             self.tokens = self.rate_per_second
