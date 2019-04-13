@@ -18,6 +18,17 @@ jobs:
           command: |
             docker-compose run --rm test bash -c "python3 setup.py develop && pytest --cov=pacemaker --cov-fail-under 95 --cov-report=html --html=report.html --self-contained-html"
 
+      - store_test_results:
+          path: report.html
+
+      - store_artifacts:
+          path: report.html
+          destination: test-report
+
+      - store_artifacts:
+          path: htmlcov
+          destination: cov
+
   sonar_scan:
     machine: true
     steps:
