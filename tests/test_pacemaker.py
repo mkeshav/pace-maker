@@ -38,7 +38,9 @@ def data_gen(n=3):
     for i in range(n):
         yield [x for x in range(n)]
 
-def test_pace_me():
+def test_pace_me(monkeypatch):
+    monkeypatch.setattr('time.sleep', lambda x: None)
+
     @pace_me(data_gen, rate_per_second=3, number_of_tokens_per_call=1, n=6)
     def process(data):
         print('Processing....{0}'.format(data))
