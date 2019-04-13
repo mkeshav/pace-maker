@@ -18,9 +18,9 @@ python3 -m pip install pacemaker-mkeshav
             yield [x for x in range(n)]
 
     # Will make 3 requests to that url/sec using 1 token everytime process method is called 
-    @pace_me(data_gen, rate_per_second=3, number_of_tokens_per_call=1, n=6)
-    def process(data):
-        r = requests.post('https://httpbin.org/post', data = data)
+    @pace_me(data_gen, rate_per_second=3, n=6)
+    def process(data, url=url):
+        r = requests.post(url, data=data)
 ```
 # Run tests
 - All tests (`docker-compose run --rm test`)
