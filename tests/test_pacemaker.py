@@ -1,6 +1,7 @@
-from pacemaker.pace_maker import PaceMaker
+from pacemaker.pacemaker import PaceMaker
 from time import sleep, time
 import pytest
+from pacemaker._decorator import pace_me
 
 def test_set_rate():
     p = PaceMaker()
@@ -31,3 +32,15 @@ def test_rate_not_set():
     p = PaceMaker()
     with pytest.raises(Exception) as e_info:
         p.consume()
+
+
+def data_gen(n=3):
+    for i in range(n):
+        yield [x for x in range(n)]
+
+def test_pace_me():
+    @pace_me(data_gen, n=6)
+    def process(data):
+        print('Processing....{0}'.format(data))
+
+    assert False        
