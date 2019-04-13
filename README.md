@@ -1,5 +1,6 @@
 [![CircleCI branch](https://img.shields.io/circleci/project/github/mkeshav/pace-maker/master.svg)](https://circleci.com/gh/mkeshav/pace-maker/tree/master)
 [![PyPI version](https://badge.fury.io/py/pacemaker-mkeshav.svg)](https://badge.fury.io/py/pacemaker-mkeshav)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pacemaker-mkeshav.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mkeshav_pace-maker&metric=alert_status)](https://sonarcloud.io/dashboard?id=mkeshav_pace-maker)
 
 # Pace Maker 
