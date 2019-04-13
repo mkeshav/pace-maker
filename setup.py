@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
+from pacemaker import __version__
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name="pacemaker-mkeshav",
-    version="0.2.0",
+    version=__version__,
     author="Keshav Murthy",
     author_email="mkeshav@gmail.com",
     description="To keep the old heart ticking",
