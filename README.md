@@ -4,7 +4,10 @@
 
 # Pace Maker 
 There are times in your life when you have to call legacy api's that can handle like 2 reqs/sec. There is no point hammering the old man and killing him. 
-This Library will help you pace the calls to old man so his heart keeps ticking. Combining this library with backoff(https://github.com/litl/backoff) can do wonders.
+
+This library will help you pace calls to the old man, so his heart keeps ticking. 
+
+Combining this library with backoff(https://github.com/litl/backoff) can do wonders.
 
 # Install
 python3 -m pip install pacemaker-mkeshav
