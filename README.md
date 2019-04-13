@@ -22,9 +22,9 @@ python3 -m pip install pacemaker-mkeshav
         for i in range(n):
             yield [x for x in range(n)]
 
-    # Will make 3 requests to that url/sec using 1 token everytime process method is called 
+    # Will make 3 requests to that url/sec using 1 token everytime process method is called. What data_gen function yields should be the first argument
     @pace_me(data_gen, rate_per_second=3, n=6)
-    def process(data, url=url):
+    def process(data, url):
         r = requests.post(url, data=data)
 ```
 # Run tests
