@@ -39,8 +39,6 @@ def data_gen(n=3):
         yield [x for x in range(n)]
 
 def test_pace_me():
-    @pace_me(data_gen, n=6)
+    @pace_me(data_gen, rate_per_second=3, number_of_tokens_per_call=1, n=6)
     def process(data):
         print('Processing....{0}'.format(data))
-
-    assert False        
