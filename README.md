@@ -3,7 +3,8 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mkeshav_pace-maker&metric=alert_status)](https://sonarcloud.io/dashboard?id=mkeshav_pace-maker)
 
 # Pace Maker 
-To keep the old heart ticking
+There are times in your life when you have to call legacy api's that can handle like 2 reqs/sec. There is no point hammering the old man and killing him. 
+This Library will help you pace the calls to old man so his heart keeps ticking. Combining this library with backoff(https://github.com/litl/backoff) can do wonders.
 
 # Install
 python3 -m pip install pacemaker-mkeshav

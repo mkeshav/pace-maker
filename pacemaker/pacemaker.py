@@ -7,7 +7,8 @@ class PaceMaker(object):
 
 
         Args:
-            no_token_sleep_in_seconds: Seconds to nap when there are no tokens to spend
+            no_token_sleep_in_seconds: Seconds to nap when there are no tokens to spend. 
+                                        Defaults to 1.
     '''
     @classmethod
     def _epoch_in_seconds(self):
@@ -35,7 +36,7 @@ class PaceMaker(object):
             Consumes the tokens and returns sleep time
 
             Args:
-                tokens: Number of tokens to consume
+                tokens: Number of tokens to consume. Defaults to 1
         '''
 
         with self.lock: 

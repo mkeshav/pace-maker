@@ -23,7 +23,7 @@ def pace_me(data_gen, rate_per_second, **data_gen_kwargs):
             for d in data_gen(**data_gen_kwargs):
                 target(d, **target_kwargs)
                 # Do not import sleep directly as we want to monkey patch this during tests.
-                time.sleep(p.consume(1))
+                time.sleep(p.consume())
         
         return wrapper
 
