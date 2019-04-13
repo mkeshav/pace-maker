@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="pacemaker-mkeshav",
-    version="0.1.0",
+    version="0.2.0",
     author="Keshav Murthy",
     author_email="mkeshav@gmail.com",
     description="To keep the old heart ticking",
