@@ -2,6 +2,8 @@
 
 from pacemaker.pacemaker import PaceMaker
 import time
+from functools import wraps
+
 
 def pace_me(data_gen, rate_per_second, **data_gen_kwargs):
     """
@@ -14,11 +16,15 @@ def pace_me(data_gen, rate_per_second, **data_gen_kwargs):
 -            passed to data_gen function.
     """
     def decorate(target):
-        p = PaceMaker()
-        p.set_rate_per_second(rate_per_second)
-        for d in data_gen(**data_gen_kwargs):
-            target(d)
-            # Do not import sleep directly as we want to monkey patch this during tests.
-            time.sleep(p.consume(1))
+        @wraps(target)
+        def wrapper(**target_kwargs):
+            p = PaceMaker()
+            p.set_rate_per_second(rate_per_second)
+            for d in data_gen(**data_gen_kwargs):
+                target(d, **target_kwargs)
+                # Do not import sleep directly as we want to monkey patch this during tests.
+                time.sleep(p.consume(1))
+        
+        return wrapper
 
     return decorate
