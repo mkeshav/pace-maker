@@ -1,5 +1,5 @@
 import pytest
-from pacemaker._decorator import pace_me
+from pacemaker import pace_me
 
 from unittest.mock import patch, call
 

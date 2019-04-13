@@ -8,6 +8,18 @@ To keep the old heart ticking
 # Install
 python3 -m pip install pacemaker-mkeshav
 
+# Usage
+```
+    from pacemaker import pace_me
+
+    def data_gen(n=3):
+        for i in range(n):
+            yield [x for x in range(n)]
+
+    @pace_me(data_gen)
+    def process(data):
+        print('Processing....{0}'.format(data))
+```
 # Run tests
 - All tests (`docker-compose run --rm test`)
 - Single test in a file(`docker-compose run --rm test bash -c "python setup.py develop &&  pytest tests/test_*.py -k 'test_float'"`)
