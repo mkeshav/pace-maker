@@ -40,7 +40,7 @@ class PaceMaker(object):
         '''
 
         with self.lock: 
-            # if the rate_per_second is set to 0, nothing to do here return 0
+            # if the rate_per_second is set to 0, throw exception
             if self.rate_per_second == 0:
                 raise Exception('Cannot use the pace maker without setting the heart rate_per_second!!!')
 
@@ -55,7 +55,6 @@ class PaceMaker(object):
 
             # subtract the number of tokens being consumed
             self.tokens -= tokens
-            # If you make this a decorator, then run the callable here.
             if self.tokens > 0:
                 # Calculate the pace based on the tokens left
                 return round(self.tokens/self.rate_per_second, 3)
