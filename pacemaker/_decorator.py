@@ -4,6 +4,7 @@ from pacemaker.pacemaker import PaceMaker
 import time
 from functools import wraps
 import logging
+import sys
 
 def pace_me(data_gen, rate_per_second, logger='pacemaker', **data_gen_kwargs):
     """
@@ -22,6 +23,7 @@ def pace_me(data_gen, rate_per_second, logger='pacemaker', **data_gen_kwargs):
         if isinstance(logger_, str):
             logger_ = logging.getLogger(logger_)
             logger_.setLevel(logging.INFO)
+            logger_.addHandler(logging.StreamHandler(sys.stdout))
 
         @wraps(target)
         def wrapper(**target_kwargs):
