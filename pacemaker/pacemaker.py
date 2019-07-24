@@ -1,6 +1,7 @@
 from time import time
 from threading import Lock
 
+
 class PaceMaker(object):
     '''
         Implementation of https://en.wikipedia.org/wiki/Token_bucket#Algorithm

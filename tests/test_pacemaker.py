@@ -2,11 +2,13 @@ from pacemaker.pacemaker import PaceMaker
 from time import sleep, time
 import pytest
 
+
 def test_set_rate():
     p = PaceMaker()
     p.set_rate_per_second(20)
     assert p.rate_per_second == 20
     assert p.tokens == 20
+
 
 def test_consume():
     p = PaceMaker()
@@ -16,6 +18,7 @@ def test_consume():
     p.consume()
     assert p.tokens == 0
     assert p.consume() == 1
+
     
 def test_consume_bucket_full():
     p = PaceMaker()
