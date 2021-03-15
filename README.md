@@ -11,7 +11,7 @@ This library will help you pace calls to the old man, so his heart keeps ticking
 Combining this library with backoff(https://github.com/litl/backoff) can do wonders.
 
 # Install
-python3 -m pip install pacemaker-mkeshav
+python3 -m pip install pacemaker
 
 # Usage
 ```
