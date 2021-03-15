@@ -14,4 +14,4 @@ echo -e " password = $PYPI_API_TOKEN" >> ~/.pypirc
 echo "Building...."
 python3 setup.py sdist bdist_wheel
 echo "Uploading...."
-python3 -m twine --repository PROJECT_NAME upload -u mkeshav dist/*
+python3 -m twine upload --repository PROJECT_NAME dist/*
