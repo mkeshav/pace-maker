@@ -29,3 +29,8 @@ python3 -m pip install pacemaker
 ```
 # Run tests
 - All tests (`docker-compose run --rm test`)
+
+# Release
+
+- Add PYPI_API_TOKEN env variable in circle
+- TWINE_PASSWORD used pypi login password which is bad
