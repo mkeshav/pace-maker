@@ -2,7 +2,12 @@
 
 set -eu
 
-# Repo by default on twine is pypi.org, TWINE_PASSWORD should be set in circle.
+# shellcheck disable=SC2129
+echo -e "[pypi]" >> ~/.pypirc
+echo -e "username = __token__" >> ~/.pypirc
+echo -e "password = $PYPI_API_TOKEN" >> ~/.pypirc
+
+# Repo by default on twine is pypi.org, $PYPI_API_TOKEN should be set in circle.
 echo "Building...."
 python3 setup.py sdist bdist_wheel
 echo "Uploading...."
