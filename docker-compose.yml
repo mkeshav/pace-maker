@@ -9,7 +9,7 @@ services:
     command: >
       bash -c "python3 setup.py develop && pytest -vv"
     environment:
-      - $PYPI_API_TOKEN
+      - PYPI_API_TOKEN
 
   scan:
     build:
