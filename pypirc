@@ -1,6 +1,5 @@
 [distutils]
   index-servers =
-    pypi
     pacemaker
 
 [pacemaker]
