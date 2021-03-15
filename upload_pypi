@@ -1,16 +1,7 @@
 #!/usr/bin/env bash
 
 set -eu
-PROJECT_NAME="pacemaker"
-echo "Creating pypirc file in ...."
-
-# shellcheck disable=SC2129
-echo -e "[$PROJECT_NAME]" >> ~/.pypirc
-echo -e "repository = https://upload.pypi.org/legacy/" >> ~/.pypirc
-echo -e "username = __token__" >> ~/.pypirc
-echo -e "password = $PYPI_API_TOKEN" >> ~/.pypirc
-
-cat ~/.pypirc
+echo -e " password = $PYPI_API_TOKEN" >> ~/.pypirc
 
 # Repo by default on twine is pypi.org, $PYPI_API_TOKEN should be set in circle.
 echo "Building...."
