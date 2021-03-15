@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="pacemaker-mkeshav",
+    name="pacemaker",
     version=__version__,
     author="Keshav Murthy",
     author_email="mkeshav@gmail.com",

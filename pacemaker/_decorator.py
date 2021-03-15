@@ -1,6 +1,6 @@
 # coding:utf-8
 
-from pacemaker.pacemaker import PaceMaker
+from .pacemaker import PaceMaker
 import time
 from functools import wraps
 import logging

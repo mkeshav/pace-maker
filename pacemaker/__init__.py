@@ -6,7 +6,7 @@ function such that it will be paced to given rate.
 For examples and full documentation see the README at
 https://github.com/mkeshav/pace-maker
 """
-from pacemaker._decorator import pace_me
+from ._decorator import pace_me
 
 __all__ = [
     'pace_me'
